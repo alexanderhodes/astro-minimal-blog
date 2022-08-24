@@ -1,13 +1,48 @@
 ---
+import { Icon } from "astro-icon";
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-	&copy; {currentYear} YOUR NAME HERE. All rights reserved.
+	<div class="mb-3 mt-4">
+		<div class="flex flex-row">
+			<div class="basis-3/4 text-left">
+				<div class="flex flex-row mb-2">
+					<a class="mr-2 hover:text-gray-400" href="#">Imprint</a>
+					<a class="mr-2 hover:text-gray-400" href="#">Privacy</a>
+					<a class="mr-2 hover:text-gray-400" href="#">About</a>
+				</div>
+				<div>
+					&copy; {currentYear} AWESOME NAME.
+				</div>
+			</div>
+			<div class="basis-1/4 justify-end flex flex-row">
+				<a
+					href="#"
+					class="ml-4 hover:text-gray-400"
+					aria-label="Email"
+					rel="noopener"
+				>
+					<Icon name="fa-regular:envelope" />
+				</a>
+				<a
+					href="#"
+					class="ml-4 hover:text-gray-400"
+					aria-label="Github"
+					rel="noopener"
+				>
+					<Icon name="fa-brands:github" />
+				</a>
+			</div>
+		</div>
+	</div>
 </footer>
 <style>
-	footer {
-		padding: 25px;
-		text-align: center;
+	a {
+		color: black;
+	}
+	[astro-icon] {
+		height: 24px;
 	}
 </style>
