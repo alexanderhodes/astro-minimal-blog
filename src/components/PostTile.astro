@@ -1,26 +1,28 @@
 ---
-const { url, title, description } = Astro.props;
+const { url, title, description, date } = Astro.props;
 
 const shortDescription = `${description.substring(0, 50)} ...`;
 ---
 
 <div class="mb-2">
     <div class="p-2 mb-2">
-        <div class="">
-            <a
-                href={url}
-                class="text-black hover:text-slate-500 focus:text-slate-500"
-            >
-                <p class="mb-2 font-bold">
-                    {title}
-                </p>
-            </a>
-
-            <p class="font-light">
-                {shortDescription}
+        <a
+            href={url}
+            class="text-black hover:text-slate-500 focus:text-slate-500"
+        >
+            <p class="mb-2 font-bold">
+                {title}
             </p>
-        </div>
+        </a>
+
+        <p class="font-light mb-1">
+            {shortDescription}
+        </p>
+
+        <p class="text-right italic text-sm">
+            {date}
+        </p>
     </div>
 
-    <div class="h-px border-gray-400 border-b mb-2 w-full">&nbsp;</div>
+    <div class="h-px border-gray-400 border-b w-full">&nbsp;</div>
 </div>
