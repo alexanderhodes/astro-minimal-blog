@@ -1,0 +1,32 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header title={SITE_TITLE} />
+        <main>
+            <h3 class="font-bold text-red-500 text-lg mb-3">Page not found.</h3>
+
+            <p class="mb-2">
+                Sorry, the content your searching for is not on the website
+                available. :(
+            </p>
+
+            <p class="mb-2">
+                If you're missing something special, just <a
+                    href="#"
+                    class="text-red-500 hover:text-red-700">drop me a line</a
+                > and I'll check how I can help you.
+            </p>
+        </main>
+        <Footer />
+    </body>
+</html>
