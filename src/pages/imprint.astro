@@ -3,16 +3,6 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
-import PostTile from "../components/PostTile.astro";
-
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}"))
-    .sort(
-        (a, b) =>
-            new Date(b.frontmatter.pubDate).valueOf() -
-            new Date(a.frontmatter.pubDate).valueOf()
-    )
-    .slice(0, 3);
 ---
 
 <!DOCTYPE html>
