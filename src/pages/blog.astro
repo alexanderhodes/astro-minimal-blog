@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
 import PostTile from "../components/PostTile.astro";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
@@ -21,25 +21,25 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 	<body>
 		<Header />
 		<main>
-			<content>
-				<div>
-					<h2 class="font-bold text-red-500 text-lg">Posts</h2>
+			<h2 class="font-bold text-xl mb-6">
+				{SITE_SUB_TITLE}
+			</h2>
 
-					<div class="grid grid-cols-1 gap-4 mt-3 mb-3">
-						{
-							posts.map((p) => (
-								<PostTile
-									url={p.url}
-									title={p.frontmatter.title}
-									description={p.frontmatter.description}
-									date={p.frontmatter.pubDate}
-									is:raw
-								/>
-							))
-						}
-					</div>
-				</div>
-			</content>
+			<h3 class="font-bold text-red-500 text-lg">Posts</h3>
+
+			<div class="grid grid-cols-1 gap-4 mt-3 mb-3">
+				{
+					posts.map((p) => (
+						<PostTile
+							url={p.url}
+							title={p.frontmatter.title}
+							description={p.frontmatter.description}
+							date={p.frontmatter.pubDate}
+							is:raw
+						/>
+					))
+				}
+			</div>
 			<Footer />
 		</main>
 	</body>
