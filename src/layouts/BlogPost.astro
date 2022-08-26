@@ -10,11 +10,12 @@ export interface Props {
 		pubDate?: string;
 		updatedDate?: string;
 		heroImage?: string;
+		minutes?: string;
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate, heroImage },
+	content: { title, description, pubDate, updatedDate, minutes },
 } = Astro.props as Props;
 ---
 
@@ -26,10 +27,6 @@ const {
 				font-size: 2em;
 				margin: 0.25em 0 0;
 			}
-			hr {
-  				border-top: 1px solid #DDD;
-				margin: 1rem 0;
-			}
 		</style>
 	</head>
 
@@ -37,18 +34,37 @@ const {
 		<Header />
 		<main>
 			<article>
-				{heroImage && (
-					<img
-						width={720}
-						height={360}
-						src={heroImage}
-						alt=""
-					/>
-				)}
 				<h1 class="title">{title}</h1>
-				{pubDate && <time>{pubDate}</time>}
-				{updatedDate && <div>Last updated on <time>{updatedDate}</time></div>}
-				<hr/>
+				<div>
+					<div class="flex flex-row">
+						<div class="basis-1/2 text-left">
+							{
+								minutes && (
+									<span class="text-sm">
+										{minutes} minutes
+									</span>
+								)
+							}
+						</div>
+						<div class="basis-1/2 text-right">
+							{
+								pubDate && (
+									<time class="italic text-sm">
+										{pubDate}
+									</time>
+								)
+							}
+						</div>
+					</div>
+					{
+						updatedDate && (
+							<div class="italic text-sm text-right">
+								Last updated on <time>{updatedDate}</time>
+							</div>
+						)
+					}
+				</div>
+				<hr class="border-t-black mb-3 mt-3" />
 				<slot />
 			</article>
 		</main>
