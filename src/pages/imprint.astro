@@ -1,0 +1,116 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
+import PostTile from "../components/PostTile.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = (await Astro.glob("./blog/*.{md,mdx}"))
+    .sort(
+        (a, b) =>
+            new Date(b.frontmatter.pubDate).valueOf() -
+            new Date(a.frontmatter.pubDate).valueOf()
+    )
+    .slice(0, 3);
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header title={SITE_TITLE} />
+        <main>
+            <h2 class="font-bold text-xl mb-6">
+                {SITE_SUB_TITLE}
+            </h2>
+
+            <h3 class="font-bold text-red-500 text-lg mb-3">Imprint</h3>
+
+            <p class="mb-2">Some legal information about this site.</p>
+
+            <p class="mb-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Libero id faucibus nisl tincidunt. Velit egestas dui id ornare
+                arcu odio ut sem nulla. Gravida in fermentum et sollicitudin ac
+                orci phasellus. Cras sed felis eget velit. Eu scelerisque felis
+                imperdiet proin fermentum leo vel orci porta. Arcu felis
+                bibendum ut tristique et egestas quis ipsum suspendisse.
+                Condimentum mattis pellentesque id nibh. Lectus proin nibh nisl
+                condimentum id venenatis. Ut porttitor leo a diam. Fermentum
+                odio eu feugiat pretium nibh ipsum. Donec adipiscing tristique
+                risus nec feugiat in.
+            </p>
+            <p class="mb-2">
+                Porttitor lacus luctus accumsan tortor posuere ac. Purus in
+                massa tempor nec feugiat. Nascetur ridiculus mus mauris vitae.
+                Turpis egestas sed tempus urna. Eget arcu dictum varius duis at
+                consectetur lorem donec massa. Duis tristique sollicitudin nibh
+                sit amet commodo nulla facilisi. Tellus id interdum velit
+                laoreet id. Diam maecenas sed enim ut sem viverra aliquet. Dolor
+                purus non enim praesent elementum facilisis leo vel fringilla.
+                Iaculis at erat pellentesque adipiscing commodo elit at. Et
+                pharetra pharetra massa massa ultricies mi. Nam at lectus urna
+                duis convallis convallis tellus id. Nunc sed id semper risus.
+                Enim nunc faucibus a pellentesque. Adipiscing bibendum est
+                ultricies integer quis auctor elit. Vel risus commodo viverra
+                maecenas accumsan lacus vel facilisis. Cursus turpis massa
+                tincidunt dui ut ornare. Sodales neque sodales ut etiam sit.
+                Elementum nibh tellus molestie nunc non blandit massa enim nec.
+                Vitae elementum curabitur vitae nunc sed velit.
+            </p>
+
+            <p class="mb-2">
+                Tristique et egestas quis ipsum. Fames ac turpis egestas
+                maecenas. Risus nec feugiat in fermentum posuere urna nec
+                tincidunt. Augue eget arcu dictum varius duis. Imperdiet massa
+                tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada.
+                In aliquam sem fringilla ut morbi. Nisl suscipit adipiscing
+                bibendum est. Tristique et egestas quis ipsum suspendisse
+                ultrices gravida dictum. Nec nam aliquam sem et tortor consequat
+                id porta nibh. Amet cursus sit amet dictum sit amet justo donec
+                enim. Enim neque volutpat ac tincidunt vitae semper quis lectus.
+                Diam vel quam elementum pulvinar. Sed pulvinar proin gravida
+                hendrerit lectus. Facilisi etiam dignissim diam quis enim.
+                Phasellus egestas tellus rutrum tellus pellentesque eu. At urna
+                condimentum mattis pellentesque. Sed odio morbi quis commodo
+                odio aenean. Risus ultricies tristique nulla aliquet. Adipiscing
+                tristique risus nec feugiat.
+            </p>
+
+            <p class="mb-2">
+                Risus ultricies tristique nulla aliquet enim tortor at auctor
+                urna. Bibendum ut tristique et egestas quis ipsum suspendisse.
+                Enim nulla aliquet porttitor lacus luctus. Ipsum consequat nisl
+                vel pretium lectus quam. Velit sed ullamcorper morbi tincidunt
+                ornare massa. Est ante in nibh mauris cursus mattis. In mollis
+                nunc sed id semper risus in hendrerit. A arcu cursus vitae
+                congue mauris rhoncus aenean vel. Ornare aenean euismod
+                elementum nisi quis eleifend quam. Egestas fringilla phasellus
+                faucibus scelerisque. Convallis convallis tellus id interdum
+                velit laoreet. Est lorem ipsum dolor sit. Ultricies mi eget
+                mauris pharetra et ultrices. Mauris pharetra et ultrices neque
+                ornare aenean. A iaculis at erat pellentesque adipiscing commodo
+                elit at. Lectus proin nibh nisl condimentum id venenatis a
+                condimentum.
+            </p>
+
+            <p class="mb-2">
+                Tristique senectus et netus et malesuada fames ac. Turpis
+                egestas integer eget aliquet nibh. Vulputate enim nulla aliquet
+                porttitor lacus luctus accumsan tortor. Ut enim blandit volutpat
+                maecenas volutpat blandit aliquam etiam erat. Sem fringilla ut
+                morbi tincidunt augue interdum velit euismod in. Arcu non
+                sodales neque sodales ut etiam sit. Fermentum leo vel orci porta
+                non. Blandit massa enim nec dui nunc mattis enim ut tellus.
+                Lorem ipsum dolor sit amet consectetur adipiscing elit duis.
+                Duis tristique sollicitudin nibh sit amet. Gravida dictum fusce
+                ut placerat orci nulla pellentesque.
+            </p>
+        </main>
+        <Footer />
+    </body>
+</html>
