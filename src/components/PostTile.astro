@@ -6,19 +6,19 @@ const shortDescription = `${description.substring(0, 60)} ...`;
 
 <div class="mb-2">
     <div class="pb-2 mb-2">
-        <a href={url} class="text-black hover:text-red-500">
-            <p class="mb-2 font-bold">
+        <div class="mb-2">
+            <a href={url} class="hover:text-red-500 font-bold">
                 {title}
-            </p>
-        </a>
+            </a>
+        </div>
 
-        <p class="font-light mb-1">
+        <div class="font-light mb-1">
             {shortDescription}
-        </p>
+        </div>
 
-        <p class="text-right italic text-sm hover:text-red-500">
+        <div class="text-right italic text-sm hover:text-red-500">
             {date}
-        </p>
+        </div>
     </div>
 
     <div class="h-px border-gray-500 border-b w-full">&nbsp;</div>

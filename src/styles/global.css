@@ -26,7 +26,11 @@ b {
 	color: #222;
 }
 a {
-	color: #3273dc;
+	color: #000;
+	text-decoration: none;
+}
+p {
+	margin-bottom: 12px;
 }
 nav a {
 	margin-right: 10px;
