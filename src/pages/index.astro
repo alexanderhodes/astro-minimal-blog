@@ -2,15 +2,17 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
 import PostTile from "../components/PostTile.astro";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-	(a, b) =>
-		new Date(b.frontmatter.pubDate).valueOf() -
-		new Date(a.frontmatter.pubDate).valueOf()
-);
+const posts = (await Astro.glob("./blog/*.{md,mdx}"))
+	.sort(
+		(a, b) =>
+			new Date(b.frontmatter.pubDate).valueOf() -
+			new Date(a.frontmatter.pubDate).valueOf()
+	)
+	.slice(0, 3);
 ---
 
 <!DOCTYPE html>
@@ -21,26 +23,42 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 	<body>
 		<Header title={SITE_TITLE} />
 		<main>
-			<h1>Awesome blog</h1>
+			<div class="mb-6">
+				<h1 class="font-bold text-xl">
+					{SITE_SUB_TITLE}
+				</h1>
+			</div>
 
-			Here would be some awesome text about this blog
+			<div class="mb-8">
+				<p>
+					Here you can add some further information about yourself and
+					what you're doing. As well you can find more information <a
+						href="/about"
+						class="text-red-500 hover:text-red-700">about me</a
+					> on this page.
+				</p>
+			</div>
 
-			<p class="font-bold">Posts</p>
+			<div>
+				<h2 class="font-bold text-red-500 text-lg">Posts</h2>
 
-			<div
-				class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-3 mb-3"
-			>
-				{
-					posts.map((p) => (
-						<PostTile
-							url={p.url}
-							title={p.frontmatter.title}
-							description={p.frontmatter.description}
-							date={p.frontmatter.pubDate}
-							is:raw
-						/>
-					))
-				}
+				<div class="grid grid-cols-1 gap-4 mt-3 mb-3">
+					{
+						posts.map((p) => (
+							<PostTile
+								url={p.url}
+								title={p.frontmatter.title}
+								description={p.frontmatter.description}
+								date={p.frontmatter.pubDate}
+								is:raw
+							/>
+						))
+					}
+				</div>
+
+				<a href="/blog" class="text-red-500 hover:text-red-700"
+					>See all posts</a
+				>
 			</div>
 		</main>
 		<Footer />

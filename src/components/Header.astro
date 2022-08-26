@@ -1,17 +1,13 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../config";
 ---
 
-<header>
+<header class="mb-4">
 	<a href="/">
-		<h1 class="uppercase font-bold">
+		<h1
+			class="uppercase font-bold text-red-500 hover:text-red-700 text-3xl"
+		>
 			{SITE_TITLE}
 		</h1>
 	</a>
 </header>
-<style>
-	header {
-		margin: 0em 0 2em;
-	}
-</style>

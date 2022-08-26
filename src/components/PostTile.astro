@@ -1,11 +1,11 @@
 ---
 const { url, title, description, date } = Astro.props;
 
-const shortDescription = `${description.substring(0, 50)} ...`;
+const shortDescription = `${description.substring(0, 60)} ...`;
 ---
 
 <div class="mb-2">
-    <div class="p-2 mb-2">
+    <div class="pb-2 mb-2">
         <a href={url} class="text-black hover:text-red-500">
             <p class="mb-2 font-bold">
                 {title}
@@ -16,7 +16,7 @@ const shortDescription = `${description.substring(0, 50)} ...`;
             {shortDescription}
         </p>
 
-        <p class="text-right italic text-sm">
+        <p class="text-right italic text-sm hover:text-red-500">
             {date}
         </p>
     </div>
