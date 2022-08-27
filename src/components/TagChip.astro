@@ -9,8 +9,8 @@ const { title, selected } = Astro.props;
 
 <div
     class={selected
-        ? "bg-red-500 mr-2 pt-1 pb-1 pl-2 pr-2 rounded-xl"
-        : "bg-black mr-2 pt-1 pb-1 pl-2 pr-2 rounded-xl"}
+        ? "bg-red-500 mr-2 mb-1 pt-1 pb-1 pl-2 pr-2 rounded-xl"
+        : "bg-black mr-2 mb-1 pt-1 pb-1 pl-2 pr-2 rounded-xl"}
 >
     <a href={`/blog/tag/${title}`} class="text-white">{title}</a>
 </div>

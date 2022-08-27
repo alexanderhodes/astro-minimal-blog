@@ -13,6 +13,6 @@ const { selectedTag, posts } = Astro.props;
 const tags = findTags(posts);
 ---
 
-<div class="flex flex-row mt-2 mb-2">
+<div class="flex flex-row mt-2 mb-2 flex-wrap">
     {tags.map((t) => <TagChip title={t} selected={t === selectedTag} />)}
 </div>
