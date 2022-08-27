@@ -1,9 +1,8 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Second post"
-description: "Lorem ipsum dolor sit amet"
+description: "Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque"
 pubDate: "Jul 22 2022"
-heroImage: "/placeholder-hero.jpg"
 tags: ["general", "tech", "food", "nature"]
 ---
 

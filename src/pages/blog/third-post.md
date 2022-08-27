@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Third post"
-description: "Lorem ipsum dolor sit amet"
+description: "Tempus quam pellentesque nec nam aliquam sem."
 pubDate: "Jul 15 2022"
 heroImage: "/placeholder-hero.jpg"
 tags: ["general", "tech", "nature"]

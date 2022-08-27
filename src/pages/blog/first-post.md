@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "First post"
-description: "Lorem ipsum dolor sit amet"
+description: "Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus"
 pubDate: "Jul 08 2022"
 heroImage: "/placeholder-hero.jpg"
 minutes: 5
