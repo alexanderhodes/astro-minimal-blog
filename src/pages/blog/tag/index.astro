@@ -5,13 +5,14 @@ import Footer from "../../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../../../config";
 import PostTile from "../../../components/PostTile.astro";
 import TagsFilter from "../../../components/TagsFilter.astro";
-import { mapPosts } from "../../../utils/post.utils";
+import { findTags, mapPosts } from "../../../utils/post.utils";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = await Astro.glob("../*.{md,mdx}");
 const mappedPosts = mapPosts(posts);
 
 const currentTag = "general";
+const tags = findTags(mappedPosts);
 ---
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ const currentTag = "general";
 
             <h3 class="font-bold text-red-500 text-lg">Posts</h3>
 
-            <TagsFilter selectedTag={currentTag} posts={mappedPosts} />
+            <TagsFilter selectedTag={currentTag} tags={tags} />
 
             <div class="grid grid-cols-1 gap-4 mt-3 mb-3">
                 {

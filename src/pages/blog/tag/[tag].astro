@@ -5,7 +5,11 @@ import Footer from "../../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../../../config";
 import PostTile from "../../../components/PostTile.astro";
 import TagsFilter from "../../../components/TagsFilter.astro";
-import { filterPostsByTag, mapPosts } from "../../../utils/post.utils";
+import {
+	filterPostsByTag,
+	findTags,
+	mapPosts,
+} from "../../../utils/post.utils";
 
 const { tag } = Astro.params;
 
@@ -13,6 +17,7 @@ const { tag } = Astro.params;
 const posts = await Astro.glob("../*.{md,mdx}");
 const mappedPosts = mapPosts(posts);
 const filteredPosts = filterPostsByTag(mappedPosts, tag ? `${tag}` : "general");
+const tags = findTags(mappedPosts);
 
 export function getStaticPaths() {
 	return [
@@ -39,10 +44,7 @@ export function getStaticPaths() {
 
 			<h3 class="font-bold text-red-500 text-lg">Posts</h3>
 
-			<TagsFilter
-				selectedTag={tag ? `${tag}` : "general"}
-				posts={mappedPosts}
-			/>
+			<TagsFilter selectedTag={tag ? `${tag}` : "general"} tags={tags} />
 
 			<div class="grid grid-cols-1 gap-4 mt-3 mb-3">
 				{

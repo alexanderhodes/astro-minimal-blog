@@ -5,12 +5,10 @@ import TagChip from "./TagChip.astro";
 
 export interface Props {
     selectedTag?: string;
-    posts: Post[];
+    tags: string[];
 }
 
-const { selectedTag, posts } = Astro.props;
-
-const tags = findTags(posts);
+const { selectedTag, tags } = Astro.props;
 ---
 
 <div class="flex flex-row mt-2 mb-2 flex-wrap">
