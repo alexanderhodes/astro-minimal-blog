@@ -21,7 +21,6 @@ const filteredPosts = filterPostsByTag(sortedPosts, tag ? `${tag}` : "general");
 
 export function getStaticPaths() {
 	return [
-		{ params: { tag: undefined } },
 		{ params: { tag: "general" } },
 		{ params: { tag: "tech" } },
 		{ params: { tag: "food" } },
