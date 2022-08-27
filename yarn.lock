@@ -770,6 +770,16 @@ astro-robots-txt@^0.3.8:
     valid-filename "^4.0.0"
     zod "^3.18.0"
 
+astro-webmanifest@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/astro-webmanifest/-/astro-webmanifest-0.4.0.tgz#081e819de5cc81399f2521df7e0a4f108ba6b3a3"
+  integrity sha512-jjfVdH0olUu7XH+yfgq/jPQwXZzl4XNS/ZZfPwwf+PcNp9OTyZTsWxq9qz2c1+Qub8ins5NzE+V/vMQF7AVgUA==
+  dependencies:
+    deepmerge "^4.2.2"
+    sharp "^0.30.7"
+    valid-filename "^4.0.0"
+    zod "^3.18.0"
+
 astro@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/astro/-/astro-1.0.7.tgz#267abca8fc3b25074c7fe0e825eebc7a88155b0b"
@@ -3519,7 +3529,7 @@ semver@^7.3.5, semver@^7.3.7:
   dependencies:
     lru-cache "^6.0.0"
 
-sharp@0.30.7:
+sharp@0.30.7, sharp@^0.30.7:
   version "0.30.7"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.30.7.tgz#7862bda98804fdd1f0d5659c85e3324b90d94c7c"
   integrity sha512-G+MY2YW33jgflKPTXXptVO28HvNOo9G3j0MybYAHeEmby+QuD2U98dT6ueht9cv/XDqZspSpIhoSW+BAKJ7Hig==
