@@ -1,4 +1,11 @@
 ---
+export interface Props {
+    url: string;
+    title: string;
+    description: string;
+    date: string;
+}
+
 const { url, title, description, date } = Astro.props;
 
 const shortDescription = `${description.substring(0, 60)} ...`;

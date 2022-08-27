@@ -1,0 +1,50 @@
+---
+import BaseHead from "../../../components/BaseHead.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../../../config";
+import PostTile from "../../../components/PostTile.astro";
+import TagsFilter from "../../../components/TagsFilter.astro";
+import { mapPosts, sortPosts } from "../../../utils/post.utils";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = await Astro.glob("../*.{md,mdx}");
+const mappedPosts = mapPosts(posts);
+const sortedPosts = sortPosts(mappedPosts);
+
+const currentTag = "general";
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <h2 class="font-bold text-xl mb-6">
+                {SITE_SUB_TITLE}
+            </h2>
+
+            <h3 class="font-bold text-red-500 text-lg">Posts</h3>
+
+            <TagsFilter selectedTag={currentTag} posts={sortedPosts} />
+
+            <div class="grid grid-cols-1 gap-4 mt-3 mb-3">
+                {
+                    sortedPosts.map((p) => (
+                        <PostTile
+                            url={p.url}
+                            title={p.frontmatter.title}
+                            description={p.frontmatter.description}
+                            date={p.frontmatter.pubDate}
+                            is:raw
+                        />
+                    ))
+                }
+            </div>
+            <Footer />
+        </main>
+    </body>
+</html>

@@ -4,15 +4,15 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
 import PostTile from "../components/PostTile.astro";
+import TagsFilter from "../components/TagsFilter.astro";
+import { mapPosts, sortPosts } from "../utils/post.utils";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}"))
-	.sort(
-		(a, b) =>
-			new Date(b.frontmatter.pubDate).valueOf() -
-			new Date(a.frontmatter.pubDate).valueOf()
-	)
-	.slice(0, 3);
+const posts = await Astro.glob("./blog/*.{md,mdx}");
+const mappedPosts = mapPosts(posts);
+const sortedPosts = sortPosts(mappedPosts).slice(0, 3);
+
+const currentTag = "general";
 ---
 
 <!DOCTYPE html>
@@ -40,9 +40,11 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}"))
 			<div>
 				<h3 class="font-bold text-red-500 text-lg">Posts</h3>
 
+				<TagsFilter selectedTag={currentTag} posts={mappedPosts} />
+
 				<div class="grid grid-cols-1 gap-4 mt-3 mb-3">
 					{
-						posts.map((p) => (
+						sortedPosts.map((p) => (
 							<PostTile
 								url={p.url}
 								title={p.frontmatter.title}
