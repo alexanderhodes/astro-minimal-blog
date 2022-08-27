@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import TagsFilter from "../components/TagsFilter.astro";
 
 export interface Props {
 	content: {
@@ -9,14 +10,13 @@ export interface Props {
 		description: string;
 		pubDate?: string;
 		updatedDate?: string;
-		heroImage?: string;
 		minutes?: string;
 		tags?: string[];
 	};
 }
 
 const {
-	content: { title, description, pubDate, updatedDate, minutes },
+	content: { title, description, pubDate, updatedDate, minutes, tags = [] },
 } = Astro.props as Props;
 ---
 
@@ -36,6 +36,9 @@ const {
 		<main>
 			<article>
 				<h1 class="title">{title}</h1>
+
+				<TagsFilter tags={tags} />
+
 				<div>
 					<div class="flex flex-row">
 						<div class="basis-1/2 text-left">
