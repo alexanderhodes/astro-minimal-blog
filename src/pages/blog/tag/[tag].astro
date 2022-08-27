@@ -5,19 +5,14 @@ import Footer from "../../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../../../config";
 import PostTile from "../../../components/PostTile.astro";
 import TagsFilter from "../../../components/TagsFilter.astro";
-import {
-	filterPostsByTag,
-	mapPosts,
-	sortPosts,
-} from "../../../utils/post.utils";
+import { filterPostsByTag, mapPosts } from "../../../utils/post.utils";
 
 const { tag } = Astro.params;
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = await Astro.glob("../*.{md,mdx}");
 const mappedPosts = mapPosts(posts);
-const sortedPosts = sortPosts(mappedPosts);
-const filteredPosts = filterPostsByTag(sortedPosts, tag ? `${tag}` : "general");
+const filteredPosts = filterPostsByTag(mappedPosts, tag ? `${tag}` : "general");
 
 export function getStaticPaths() {
 	return [
