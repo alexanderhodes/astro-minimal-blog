@@ -51,17 +51,17 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 ## Commands
 
-All commands need to be run from the root of the project.
+All commands need to be run from the root of the project. The project is setup with `yarn`. You can as well set it up using `npm`.
 
 ```bash
 # install dependencies
-$ npm install
+$ yarn
 # start local dev server
-$ npm run dev
+$ yarn dev
 # build production site
-$ npm run build
+$ yarn build
 # preview build locally
-$ npm run preview
+$ yarn preview
 ```
 
 ## Adding new tags
