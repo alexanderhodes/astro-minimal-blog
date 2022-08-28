@@ -1,25 +1,32 @@
-# Astro Starter Kit: Blog
-
-```
-npm init astro -- --template blog
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+# Minimal blog with tags
 
 Features:
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- Minimal styling
+- Tailwind integrated
+- Sitemap support
+- Robots.txt support
+- RSS Feed support
+- Markdown support
+- Webmanifest for PWA support
+- Compress support
+- Icons support
+- Tags for posts
+- 404 page integrated
+- TypeScript support
 
-## 🚀 Project Structure
+Used astro integrations:
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/)
+- [Astro sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+- [Astro tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
+- [Astro compress](https://github.com/Playform/astro-compress)
+- [Astro robots txt](https://github.com/alextim/astro-lib/tree/main/packages/astro-robots-txt)
+- [Astro icon](https://github.com/natemoo-re/astro-icon)
+
+## Project Structure
+
+Inside this project you can find the following folder and file structure
 
 ```
 ├── public/
@@ -27,35 +34,57 @@ Inside of your Astro project, you'll see the following folders and files:
 │   ├── components/
 │   ├── layouts/
 │   └── pages/
+│   └── styles/
+│   └── types/
+│   └── utils/
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
+├── tailwind.config.cjs
 └── tsconfig.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands need to be run from the root of the project.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+```bash
+# install dependencies
+$ npm install
+# start local dev server
+$ npm run dev
+# build production site
+$ npm run build
+# preview build locally
+$ npm run preview
+```
 
-## 👀 Want to learn more?
+## Adding new tags
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+For adding new tags to posts you need to add the new tag in the array to the post located in `src/pages/blog`. For example `tags: ["general", "tech", "nature", "new-tag"]`.
+
+After adding this new tag you need to add this tag into the `[tag].astro` file that the dynamic route is created and when building the site. Here you need to add the new tag as a param in the `getStaticPaths` method.
+
+```javascript
+export function getStaticPaths() {
+  return [
+    { params: { tag: "general" } },
+    { params: { tag: "tech" } },
+    { params: { tag: "food" } },
+    { params: { tag: "nature" } },
+    { params: { tag: "astro" } },
+    // added this new-tag
+    { params: { tag: "new-tag" } },
+  ];
+}
+```
+
+The tags will be read out of all posts dynamically using the `findTags` method in `src/utils/post.utils`.
 
 ## Credit
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+This theme is developed based on the [Astro blog theme](https://github.com/withastro/astro/tree/main/examples/blog).
