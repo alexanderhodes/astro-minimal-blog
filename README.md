@@ -14,6 +14,7 @@ Features:
 - Tags for posts
 - 404 page integrated
 - TypeScript support
+- Dark mode support
 
 Used astro integrations:
 

@@ -7,10 +7,26 @@ export interface Props {
 const { title, selected } = Astro.props;
 ---
 
-<div
-    class={selected
-        ? "bg-red-500 mr-2 mb-1 pt-1 pb-1 pl-3 pr-3 rounded-xl"
-        : "bg-black mr-2 mb-1 pt-1 pb-1 pl-3 pr-3 rounded-xl"}
->
-    <a href={`/blog/tag/${title}`} class="text-white">{title}</a>
+<div>
+    {
+        selected ? (
+            <div class="bg-red-500 hover:bg-white dark:hover:bg-white mr-2 mb-1 pt-1 pb-1 pl-3 pr-3 rounded-xl">
+                <a
+                    href={`/blog/tag/${title}`}
+                    class="text-white hover:text-red-500 dark:hover:text-red-500"
+                >
+                    {title}
+                </a>
+            </div>
+        ) : (
+            <div class="bg-black dark:bg-white hover:bg-red-500 dark:hover:bg-red-500 mr-2 mb-1 pt-1 pb-1 pl-3 pr-3 rounded-xl">
+                <a
+                    href={`/blog/tag/${title}`}
+                    class="text-white dark:text-black"
+                >
+                    {title}
+                </a>
+            </div>
+        )
+    }
 </div>

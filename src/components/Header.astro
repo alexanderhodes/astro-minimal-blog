@@ -1,8 +1,9 @@
 ---
+import Icon from "astro-icon";
 import { SITE_TITLE } from "../config";
 ---
 
-<header class="mb-4">
+<header class="mb-4 flex flex-row justify-between">
 	<a href="/">
 		<h1
 			class="uppercase font-bold text-red-500 hover:text-red-700 text-3xl"
@@ -10,4 +11,34 @@ import { SITE_TITLE } from "../config";
 			{SITE_TITLE}
 		</h1>
 	</a>
+	<button id="dark-mode-toggle">
+		<Icon name="tabler:sun" class="w-6 h-6 dark:text-white" />
+	</button>
 </header>
+
+<script is:inline>
+	if (
+		localStorage.theme === "dark" ||
+		(!("theme" in localStorage) &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches)
+	) {
+		document.documentElement.classList.add("dark");
+	} else {
+		document.documentElement.classList.remove("dark");
+	}
+
+	window.onload = function () {
+		const element = document.getElementById("dark-mode-toggle");
+
+		if (element) {
+			element.addEventListener("click", () => {
+				document.documentElement.classList.toggle("dark");
+
+				localStorage.theme =
+					document.documentElement.classList.contains("dark")
+						? "dark"
+						: "light";
+			});
+		}
+	};
+</script>

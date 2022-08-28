@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 ---
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUB_TITLE } from "../config";
     <head>
         <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
     </head>
-    <body>
+    <body class="dark:bg-black text-black dark:text-white">
         <Header title={SITE_TITLE} />
         <main>
             <h3 class="font-bold text-red-500 text-lg mb-3">Page not found.</h3>

@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^1.0.0",
     "astro": "^1.0.7",
     "astro-compress": "^1.0.5",
+    "astro-icon": "^0.7.3",
     "astro-robots-txt": "^0.3.8",
     "astro-webmanifest": "0.4.0"
   },
