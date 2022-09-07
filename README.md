@@ -1,5 +1,7 @@
 # Minimal blog with tags
 
+<img width="990" alt="Astro minimal blog with tags" src="https://user-images.githubusercontent.com/17107309/188873735-975a2012-2a59-43a5-b96b-688903600f5d.png">
+
 Features:
 
 - Minimal styling
